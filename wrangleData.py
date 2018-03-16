@@ -31,3 +31,11 @@ titanic.age = by_sex_class['age'].transform(impute_median)
 
 # Print the output of titanic.tail(10)
 print(titanic.tail(10))
+
+
+def c_deck_survival(gr):
+
+    c_passengers = gr['cabin'].str.startswith('C').fillna(False)
+
+    return gr.loc[c_passengers, 'survived'].mean()
+
